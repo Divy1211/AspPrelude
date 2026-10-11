@@ -4,12 +4,14 @@ from prelude.parser_imports import *
 
 USER_DIR = Path.home()
 STEAM_ID = "76561198276345085"
-STEAM_PROFILE_DIR = USER_DIR / "Games" / "Age of Empires 2 DE" / STEAM_ID
+_STEAM_PROFILE_DIR = USER_DIR / "Games" / "Age of Empires 2 DE" / STEAM_ID
 
 class Paths:
-    SCENARIO_DIR = f"{STEAM_PROFILE_DIR}/resources/_common/scenario/"
-    PROFILE_DIR = f"{STEAM_PROFILE_DIR}/profile/"
-    XS_DIR = f"{STEAM_PROFILE_DIR}/resources/_common/xs/"
+    STEAM_PROFILE_DIR = f"{_STEAM_PROFILE_DIR}/"
+    MODS_LOCAL_DIR = f"{_STEAM_PROFILE_DIR}/mods/local/"
+    SCENARIO_DIR = f"{_STEAM_PROFILE_DIR}/resources/_common/scenario/"
+    PROFILE_DIR = f"{_STEAM_PROFILE_DIR}/profile/"
+    XS_DIR = f"{_STEAM_PROFILE_DIR}/resources/_common/xs/"
     DESKTOP = f"{USER_DIR}/Desktop/"
 
 class GameInfo:
