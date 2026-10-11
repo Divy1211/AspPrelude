@@ -25,6 +25,7 @@ from .help_functions import (
     condition_to_text,
     lerp,
     get_arg,
+    to_pascal,
 )
 from .common_vars import Paths, GameInfo
 from .help_xs import XsFn, xs_vec, str_arg, bool_arg, xs_display_instructions, is_in_editor

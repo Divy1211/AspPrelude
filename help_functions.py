@@ -1,17 +1,16 @@
-import json
+import subprocess
 import sys
 from importlib.metadata import version
 from itertools import product
+from pathlib import Path
 from random import randrange
 from typing import Iterator
 
 import regex
 
-from portalocker import Lock, LockFlags
-
-from prelude.parser_imports import *
 from prelude.common_vars import GameInfo
 from prelude.help_xs import XsFn
+from prelude.parser_imports import *
 
 _condition_grammar = {
     "1": "OBJECT1 not AREA",
@@ -114,6 +113,9 @@ def make_unreachable(trigger: Trigger):
         source_player = PlayerId.GAIA,
     )
 
+def to_pascal(v: str) -> str:
+    return "".join([word[0].upper() + word[1:] for word in v.lower().split("_")])
+
 def lerp(area: Area, tx: float = 0.5, ty: float = 0.5, as_int: bool = False) -> Tile:
     tile = Tile(area.corner2.x * tx + area.corner1.x * (1-tx), area.corner2.y * ty + area.corner1.y * (1-ty))
     if as_int:
@@ -192,26 +194,23 @@ def add_credits_header(name: str, map_version: str, scx: AoE2DEScenario) -> str:
     tm = scx.trigger_manager
     triggers = tm.triggers
     tm.triggers = []
-    build_counts_path = r"C:\Users\Divy\PycharmProjects\ParserMaps\build_counts.json"
-    with open(build_counts_path) as file:
-        build_counts = json.load(file)
 
-    build_counts.setdefault(name, 0)
-    build_counts[name] += 1
+    commit_hash = subprocess.check_output(
+        ["git", "rev-parse", "HEAD"],
+        cwd = Path(__file__).resolve().parent.parent,
+        text = True,
+    ).strip()
 
     tm.add_trigger("")
     tm.add_trigger("")
     tm.add_trigger("")
-    tm.add_trigger(f"       Map By Alian713 (v{map_version}.{build_counts[name]})")
+    tm.add_trigger(f"       Map By Alian713 (v{map_version}-{commit_hash[:7]})")
     tm.add_trigger(f" Made Using AoE2ScenarioParser v{version('AoE2ScenarioParser')}")
     tm.add_trigger(" AoE2ScenarioParser by MrKirby:")
     tm.add_trigger("https://github.com/KSneijders/AoE2ScenarioParser")
     tm.add_trigger("")
     tm.add_trigger("")
     tm.add_trigger("")
-
-    with Lock(build_counts_path, "r+", flags = LockFlags.EXCLUSIVE) as file:
-        json.dump(build_counts, file, indent = 4)
 
     # fix the (de)activate effect trigger refs
     for trigger in triggers:
@@ -222,7 +221,7 @@ def add_credits_header(name: str, map_version: str, scx: AoE2DEScenario) -> str:
 
     tm.triggers.extend(triggers)
 
-    return f"{map_version}.{build_counts[name]}"
+    return f"{map_version}-{commit_hash[:7]}"
 
 def regi_nomad_res(scx: AoE2DEScenario):
     tm = scx.trigger_manager
