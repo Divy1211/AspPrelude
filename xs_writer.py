@@ -56,6 +56,27 @@ class XsWriter:
         self.writeln(f"}}")
 
     @contextmanager
+    def switch(self, expr: str):
+        self.writeln(f"switch ({expr}) {{")
+        with self.indented():
+            yield
+        self.writeln(f"}}")
+
+    @contextmanager
+    def case_(self, expr: str):
+        self.writeln(f"case {expr} : {{")
+        with self.indented():
+            yield
+        self.writeln(f"}}")
+
+    @contextmanager
+    def default_(self):
+        self.writeln(f"default : {{")
+        with self.indented():
+            yield
+        self.writeln(f"}}")
+
+    @contextmanager
     def for_(self, expr: str):
         self.writeln(f"for ({expr}) {{")
         with self.indented():
@@ -96,6 +117,7 @@ class XsWriter:
         return self.content.getvalue()
 
     def flush(self):
+        assert Path(self.path).exists(), f"path '{self.path}' does not exist"
         with open(self.path, "w") as file:
             file.write(self.content.getvalue())
 

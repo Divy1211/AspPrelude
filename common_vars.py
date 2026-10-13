@@ -219,8 +219,8 @@ class GameInfo:
 
         UnitInfo.TURTLE_SHIP,
         UnitInfo.ELITE_TURTLE_SHIP,
-        UnitInfo.LONGBOAT,
-        UnitInfo.ELITE_LONGBOAT,
+        UnitInfo.LONGSHIP,
+        UnitInfo.ELITE_LONGSHIP,
         UnitInfo.CARAVEL,
         UnitInfo.ELITE_CARAVEL,
         UnitInfo.THIRISADAI,
