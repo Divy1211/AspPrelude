@@ -7,6 +7,9 @@ STEAM_ID = "76561198276345085"
 _STEAM_PROFILE_DIR = USER_DIR / "Games" / "Age of Empires 2 DE" / STEAM_ID
 _INSTALL_DIR = Path(r"C:\Program Files (x86)\Steam\steamapps\common\AoE2DE")
 
+assert _STEAM_PROFILE_DIR.exists(), "Please change this to your profile directory"
+assert _INSTALL_DIR.exists(), "Please change this to your install directory"
+
 class Paths:
     STEAM_PROFILE_DIR = f"{_STEAM_PROFILE_DIR}/"
     MODS_LOCAL_DIR = f"{_STEAM_PROFILE_DIR}/mods/local/"
