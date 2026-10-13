@@ -4,18 +4,18 @@ from prelude.parser_imports import *
 
 USER_DIR = Path.home()
 STEAM_ID = "76561198276345085"
-_STEAM_PROFILE_DIR = USER_DIR / "Games" / "Age of Empires 2 DE" / STEAM_ID
+_USER_PROFILE_DIR = USER_DIR / "Games" / "Age of Empires 2 DE" / STEAM_ID
 _INSTALL_DIR = Path(r"C:\Program Files (x86)\Steam\steamapps\common\AoE2DE")
 
-assert _STEAM_PROFILE_DIR.exists(), "Please change this to your profile directory"
+assert _USER_PROFILE_DIR.exists(), "Please change this to your profile directory"
 assert _INSTALL_DIR.exists(), "Please change this to your install directory"
 
 class Paths:
-    STEAM_PROFILE_DIR = f"{_STEAM_PROFILE_DIR}/"
-    MODS_LOCAL_DIR = f"{_STEAM_PROFILE_DIR}/mods/local/"
-    SCENARIO_DIR = f"{_STEAM_PROFILE_DIR}/resources/_common/scenario/"
-    PROFILE_DIR = f"{_STEAM_PROFILE_DIR}/profile/"
-    XS_DIR = f"{_STEAM_PROFILE_DIR}/resources/_common/xs/"
+    USER_PROFILE_DIR = f"{_USER_PROFILE_DIR}/"
+    MODS_LOCAL_DIR = f"{_USER_PROFILE_DIR}/mods/local/"
+    SCENARIO_DIR = f"{_USER_PROFILE_DIR}/resources/_common/scenario/"
+    PROFILE_DIR = f"{_USER_PROFILE_DIR}/profile/"
+    XS_DIR = f"{_USER_PROFILE_DIR}/resources/_common/xs/"
     DESKTOP = f"{USER_DIR}/Desktop/"
     INSTALL_DIR = f"{_INSTALL_DIR}/"
     DAT_FILE = rf"{_INSTALL_DIR}/resources/_common/dat/empires2_x2_p1.dat"
