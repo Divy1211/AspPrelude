@@ -114,7 +114,7 @@ def make_unreachable(trigger: Trigger):
     )
 
 def to_pascal(v: str) -> str:
-    return "".join([word[0].upper() + word[1:] for word in v.lower().split("_")])
+    return "".join([word[0].upper() + word[1:] for word in regex.split(r"[_\s]", v)])
 
 def lerp(area: Area, tx: float = 0.5, ty: float = 0.5, as_int: bool = False) -> Tile:
     tile = Tile(area.corner2.x * tx + area.corner1.x * (1-tx), area.corner2.y * ty + area.corner1.y * (1-ty))

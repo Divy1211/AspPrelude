@@ -82,22 +82,38 @@ class GameInfo:
 
     COLOUR = ["", "<BLUE>", "<RED>", "<GREEN>", "<YELLOW>", "<AQUA>", "<PURPLE>", "<GREY>", "<ORANGE>"]
 
-    BUTTON_LOCATIONS = [1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13]
+    BUTTON_LOCATIONS = [
+        ButtonLocation.r1c1,
+        ButtonLocation.r1c2,
+        ButtonLocation.r1c3,
+        ButtonLocation.r1c4,
+        ButtonLocation.r1c5,
+        ButtonLocation.r2c1,
+        ButtonLocation.r2c2,
+        ButtonLocation.r2c3,
+        ButtonLocation.r2c4,
+        ButtonLocation.r2c5,
+        ButtonLocation.r3c1,
+        ButtonLocation.r3c2,
+        ButtonLocation.r3c3,
+        ButtonLocation.r3c4,
+    ]
 
     HOTKEY_ID_MAP = {
-        1: 16344,
-        2: 16157,
-        3: 16487,
-        4: 16464,
-        6: 16149,
-        7: 16131,
-        8: 16161,
-        9: 16138,
-        10: 16176,
-        11: 16164,
-        12: 16182,
-        13: 16159,
-        14: 19054
+        1: 16135,  # Q
+        2: 16128,  # W
+        3: 16171,  # E
+        4: 16169,  # R
+        5: 16144,  # T
+        6: 16099,  # A
+        7: 16068,  # S
+        8: 16085,  # D
+        9: 16093,  # F
+        10: 16156, # G
+        11: 16089, # Z
+        12: 16186, # X
+        13: 16142, # C
+        14: 16445, # V
     }
 
     BARRACK_UNITS = [
