@@ -32,7 +32,7 @@ from .help_xs import XsFn, xs_vec, str_arg, bool_arg, xs_display_instructions, i
 
 from .struct_gen import xs_struct
 
-from xs_writer import XsWriter
+from .xs_writer import XsWriter
 
 from AoE2ScenarioParser import settings
 
